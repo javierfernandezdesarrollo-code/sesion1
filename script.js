@@ -82,6 +82,47 @@ function renderProducts(filter = 'all') {
       </div>
     </article>
   `).join('');
+
+  const pexelsPhotos = {
+    'Playera Básica Blanca': '37704838',
+    'Playera Básica Negra': '6046205',
+    'Playera Estampada Coral': '34233605',
+    'Playera Estampada Frontal': '26601192',
+    'Playera Premium': '34156905',
+    'Playera Premium Oversize': '29996216',
+    'Playera Básica Color': '581087',
+    'Playera Estampada Espalda': '4440566'
+  };
+
+  catalogGrid.querySelectorAll('.product').forEach((card, index) => {
+    const product = list[index];
+    const photoId = pexelsPhotos[product.name];
+    const photo = document.createElement('img');
+    photo.className = 'product__image';
+    photo.src = `https://images.pexels.com/photos/${photoId}/pexels-photo-${photoId}.jpeg?auto=compress&cs=tinysrgb&w=900`;
+    photo.alt = `${product.name}, fotografía de referencia en Pexels`;
+    photo.loading = 'lazy';
+    photo.decoding = 'async';
+    const source = document.createElement('a');
+    source.className = 'product__source';
+    const pexelsPage = {
+      '37704838': 'https://www.pexels.com/photo/minimalist-fashion-flat-lay-of-white-t-shirt-37704838/',
+      '6046205': 'https://www.pexels.com/photo/black-shiny-t-shirt-with-short-sleeves-against-white-background-6046205/',
+      '34233605': 'https://www.pexels.com/photo/casual-outfit-with-t-shirt-and-accessories-34233605/',
+      '26601192': 'https://www.pexels.com/photo/close-up-of-t-shirts-26601192/',
+      '34156905': 'https://www.pexels.com/photo/flat-lay-of-mint-green-t-shirt-with-cotton-stems-34156905/',
+      '29996216': 'https://www.pexels.com/photo/colorful-t-shirts-hanging-on-garment-rack-29996216/',
+      '581087': 'https://www.pexels.com/photo/folded-assorted-color-shirts-581087/',
+      '4440566': 'https://www.pexels.com/photo/a-person-folding-t-shirts-neatly-4440566/'
+    };
+    source.href = pexelsPage[photoId];
+    source.target = '_blank';
+    source.rel = 'noopener';
+    source.textContent = 'Foto: Pexels';
+    const media = card.querySelector('.product__media');
+    media.querySelector('svg')?.replaceWith(photo);
+    media.append(source);
+  });
 }
 
 renderProducts();

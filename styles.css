@@ -456,3 +456,90 @@ h1, h2, h3 { font-family: var(--font-head); line-height: 1.15; letter-spacing: -
     scroll-behavior: auto !important;
   }
 }
+/* ---------- Identidad visual navideña ---------- */
+:root {
+  --coral: #a92835;
+  --coral-dark: #7f1d2b;
+  --yellow: #d6ad57;
+  --cream: #f8f3e8;
+  --ink: #20352b;
+  --ink-soft: #59675c;
+  --bg: #fffdf8;
+  --bg-alt: #f2f5ee;
+  --surface: #ffffff;
+  --border: #e1e7dc;
+  --shadow: 0 10px 30px rgba(27, 54, 39, 0.09);
+  --shadow-lg: 0 20px 50px rgba(27, 54, 39, 0.16);
+}
+
+[data-theme="dark"] {
+  --coral: #e06b69;
+  --coral-dark: #c95050;
+  --yellow: #e2c06e;
+  --cream: #242c25;
+  --ink: #f5f3e9;
+  --ink-soft: #c3cabe;
+  --bg: #151c17;
+  --bg-alt: #1c261f;
+  --surface: #222d25;
+  --border: #344238;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.55);
+}
+
+body {
+  background-image: radial-gradient(circle at 8% 9%, color-mix(in srgb, var(--yellow) 10%, transparent) 0 2px, transparent 3px),
+                    radial-gradient(circle at 91% 14%, color-mix(in srgb, var(--coral) 9%, transparent) 0 2px, transparent 3px);
+  background-size: 42px 42px, 56px 56px;
+}
+
+.logo__mark {
+  background: linear-gradient(135deg, #1c6845 0 48%, #b52f3b 49% 100%);
+  box-shadow: 0 4px 10px rgba(28, 104, 69, 0.28);
+}
+
+.logo__mark::after { border-radius: 50% 50% 4px 4px; }
+.hero {
+  background: linear-gradient(115deg, color-mix(in srgb, var(--bg-alt) 78%, transparent), transparent 68%);
+}
+.hero__art::before {
+  content: "?  ?  ?";
+  position: absolute;
+  top: 7%;
+  right: 8%;
+  color: var(--yellow);
+  font-size: 1.7rem;
+  letter-spacing: 1rem;
+  opacity: .9;
+}
+.tshirt--coral { color: #1c6845; }
+.tshirt { filter: drop-shadow(0 20px 30px rgba(28, 104, 69, 0.3)); }
+.blob--yellow { background: #d6ad57; }
+.blob--orange { background: #b52f3b; }
+.btn--primary { box-shadow: 0 8px 20px rgba(169, 40, 53, 0.25); }
+.section--alt { background-image: linear-gradient(135deg, color-mix(in srgb, var(--bg-alt) 92%, transparent), var(--bg-alt)); }
+.contact { background: linear-gradient(135deg, var(--bg-alt), color-mix(in srgb, var(--yellow) 10%, var(--bg-alt))); }
+.wa-float { box-shadow: 0 10px 25px rgba(37, 211, 102, 0.32); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero__art::before { animation: twinkle 2.8s ease-in-out infinite alternate; }
+  @keyframes twinkle { from { opacity: .55; transform: scale(.96); } to { opacity: 1; transform: scale(1.04); } }
+}
+
+/* ---------- FotografÃ­a de producto desde Pexels ---------- */
+.product__media { overflow: hidden; }
+.product__image { width: 100%; height: 100%; object-fit: cover; }
+.product__source {
+  position: absolute;
+  right: .65rem;
+  bottom: .55rem;
+  padding: .2rem .5rem;
+  border-radius: 999px;
+  background: rgba(20, 28, 23, .68);
+  color: #fff;
+  font-size: .7rem;
+  line-height: 1.4;
+  opacity: .82;
+  transition: opacity .2s ease;
+}
+.product__source:hover, .product__source:focus-visible { opacity: 1; }
